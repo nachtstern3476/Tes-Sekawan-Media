@@ -6,9 +6,11 @@
 - admin3 - admin
 
 ### Database
--
+- Phpmyadmin
+- version 4.9.0.1
+- Host: 127.0.0.1
 
-### Php Version
+### PHP Version
 - 7.3 - 8.0
 
 ### Dibuat Menggunakan Framework Laravel 8
