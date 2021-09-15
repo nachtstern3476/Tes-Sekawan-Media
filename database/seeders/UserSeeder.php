@@ -18,19 +18,19 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Nimas Suri',
                 'username' => 'admin1',
-                'password' => Hash::make($data['password']),
+                'password' => Hash::make('admin'),
                 'level' => '1',
             ],
             [
                 'name' => 'Agus Yayat',
                 'username' => 'admin2',
-                'password' => Hash::make($data['password']),
+                'password' => Hash::make('admin'),
                 'level' => '2',
             ],
             [
                 'name' => 'Hanis Hat',
                 'username' => 'admin3',
-                'password' => Hash::make($data['password']),
+                'password' => Hash::make('admin'),
                 'level' => '2',
             ],
         ];
