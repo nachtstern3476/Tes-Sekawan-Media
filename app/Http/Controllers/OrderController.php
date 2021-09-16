@@ -17,19 +17,37 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $data = [
-            'items' => Order::where('spt_orders.status', '!=', 'ditolak')
-                            ->where('spt_orders.status', '!=', 'selesai')
-                            ->join('spt_drivers', 'spt_orders.driver_id', '=', 'spt_drivers._id')
-                            ->join('spt_vehicles', 'spt_orders.vehicle_id', '=', 'spt_vehicles._id')
-                            ->orderBy('spt_orders.created_at', 'DESC')
-                            ->get(['spt_drivers.name AS driver_name', 'spt_vehicles.plate_number', 
-                            'spt_vehicles.type', 
-                            'spt_vehicles.name', 
-                            'spt_vehicles._id AS vehicle_id', 
-                            'spt_orders.status',
-                            'spt_orders._id']),
-        ];
+        if (auth()->user()->level == 1) {
+            $data = [
+                'items' => Order::where('spt_orders.user_input_id', '=', auth()->user()->_id)
+                                ->where('spt_orders.status', '!=', 'ditolak')
+                                ->where('spt_orders.status', '!=', 'selesai')
+                                ->join('spt_drivers', 'spt_orders.driver_id', '=', 'spt_drivers._id')
+                                ->join('spt_vehicles', 'spt_orders.vehicle_id', '=', 'spt_vehicles._id')
+                                ->orderBy('spt_orders.created_at', 'DESC')
+                                ->get(['spt_drivers.name AS driver_name', 'spt_vehicles.plate_number', 
+                                'spt_vehicles.type', 
+                                'spt_vehicles.name', 
+                                'spt_vehicles._id AS vehicle_id', 
+                                'spt_orders.status',
+                                'spt_orders._id']),
+            ];
+        }else{
+            $data = [
+                'items' => Order::where('spt_orders.user_approval_id', '=', auth()->user()->_id)
+                                ->where('spt_orders.status', '!=', 'ditolak')
+                                ->where('spt_orders.status', '!=', 'selesai')
+                                ->join('spt_drivers', 'spt_orders.driver_id', '=', 'spt_drivers._id')
+                                ->join('spt_vehicles', 'spt_orders.vehicle_id', '=', 'spt_vehicles._id')
+                                ->orderBy('spt_orders.created_at', 'DESC')
+                                ->get(['spt_drivers.name AS driver_name', 'spt_vehicles.plate_number', 
+                                'spt_vehicles.type', 
+                                'spt_vehicles.name', 
+                                'spt_vehicles._id AS vehicle_id', 
+                                'spt_orders.status',
+                                'spt_orders._id']),
+            ];
+        }
 
         return view('pages/order/index', $data);
     }

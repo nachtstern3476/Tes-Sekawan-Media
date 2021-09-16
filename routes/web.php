@@ -24,8 +24,7 @@ Auth::routes();
 Route::prefix('admin')->middleware('auth', 'admin')->group(function (){
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('data/log', [LogController::class, 'index'])->name('log');
-    Route::get('data/log/{filename}', [LogController::class, 'show'])->name('log.show');
-    Route::get('export/excel', [AdminController::class, 'export']);
+    Route::get('data/export/excel', [AdminController::class, 'export']);
     Route::resource('drivers', DriverController::class);
     Route::resource('vehicles', VehicleController::class);
     Route::resource('orders', OrderController::class);

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Exports\OrderExport;
-use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\User;
@@ -44,14 +44,23 @@ class AdminController extends Controller
             'vehicle_count' => Vehicle::all()->count(),
             'vehicle_avaible' => Vehicle::where('status', '=', 0)->count(),
             'driver' => Driver::all()->count(),
-            'pending_request' => Order::where('status', '=', 'pending')->count()
         ];
+
+        if (auth()->user()->level == 1) {
+            $data += [
+                'pending_request' => Order::where('user_input_id', '=', auth()->user()->_id)->where('status', '=', 'pending')->count()
+            ];
+        }else{
+            $data += [
+                'pending_request' => Order::where('user_approval_id', '=', auth()->user()->_id)->where('status', '=', 'pending')->count()
+            ];
+        }
 
         return view('pages/index', $data);
     }
     
     public function export() 
     {
-        return Excel::download(new OrderExport, 'sispekta_.xlsx');
+        return Excel::download(new OrderExport, 'sispekta_'.date('dmYHis').'.xlsx');
     }
 }
