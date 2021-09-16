@@ -2,7 +2,6 @@
 
 @section('content')
     <!-- Page Heading -->
-    
     <div class="card shadow mb-4">
         <div class="card-header">
             <h1 class="h5 m-0 text-gray-800 font-weight-bold">{{ $title }}</h1>
@@ -88,8 +87,17 @@
     </div>
 @endsection
 
+@section('page-styles')
+    <link href="{{ asset('theme/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('theme/css/select2-bootstrap4.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('page-scripts')
+    <script src="{{ asset('theme/js/select2/select2.min.js') }}"></script>
     <script>
+        $('#name').select2({theme: 'bootstrap4'});
+        $('#nameDriver').select2({theme: 'bootstrap4'});
+        $('#nameVehicle').select2({theme: 'bootstrap4'});
         $(`select[name="nameDriver"]`).change(function(){
             let data = $(this).find(':selected')
             $('#phone').val(data.attr('data-phone'))

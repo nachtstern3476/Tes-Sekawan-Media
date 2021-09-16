@@ -13,6 +13,8 @@
     <link href="{{ asset('theme/css/sweetalert2.min.css') }}" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="{{ asset('theme/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    @yield('page-styles')
 </head>
 
 <body id="page-top">
@@ -86,6 +88,7 @@
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('theme/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('theme/js/sweetalert2/sweetalert2.min.js') }}"></script>
+    
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('theme/js/sb-admin-2.min.js') }}"></script>

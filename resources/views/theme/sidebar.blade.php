@@ -8,7 +8,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item {{ Request::segment(2) == '' ? 'active' : '' }}">
         <a class="nav-link" href="/admin">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
@@ -23,14 +23,14 @@
         Master
     </div>
 
-    <li class="nav-item">
+    <li class="nav-item {{ Request::segment(2) == 'orders' ? 'active' : '' }}">
         <a class="nav-link" href="/admin/orders">
             <i class="fas fa-fw fa-file"></i>
             <span>Pemesanan Kendaraan</span>
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ Request::segment(2) == 'histories' ? 'active' : '' }}">
         <a class="nav-link" href="/admin/histories">
             <i class="fas fa-fw fa-clock"></i>
             <span>Riwayat Pemesanan</span>
@@ -43,14 +43,14 @@
             Features
         </div>
 
-        <li class="nav-item">
+        <li class="nav-item {{ Request::segment(2) == 'drivers' ? 'active' : '' }}">
             <a class="nav-link" href="/admin/drivers">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Driver</span>
             </a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {{ Request::segment(2) == 'vehicles' ? 'active' : '' }}">
             <a class="nav-link" href="/admin/vehicles">
                 <i class="fas fa-fw fa-wrench"></i>
                 <span>Kendaraan</span>
