@@ -1,9 +1,9 @@
 # Sispekta ( Sistem Pemesanan Kendaraan Tambang )
 
 ### Username - Password
-- admin1 - admin
-- admin2 - admin
-- admin3 - admin
+- admin1 - admin ( Petugas Input )
+- admin2 - admin ( Pengawas 1 )
+- admin3 - admin ( Pengawas 2 )
 
 ### Database
 - Phpmyadmin
